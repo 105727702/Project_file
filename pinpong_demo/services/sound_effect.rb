@@ -3,7 +3,7 @@ class SoundEffect
   def initialize
     
     @music = {
-      menu: '../sound_effect/game-background-1-321720.mp3',
+      menu: 'D:\Ruby_program\pinpong_demo\sound_effect\game-background-1-321720.mp3',
       gameplay: '',
       gameover: ''
     }
