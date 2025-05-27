@@ -97,6 +97,7 @@ on :mouse_down do |event| ## Handle mouse click events
       ui.clear_winner_texts
       game_started = true      
       scoreboard.game_started = true
+      sound.play_music(:gameplay)
     elsif ui.mouse_on_back_menu?(mx, my)  ## If the back to main menu button is clicked ## go back to the main menu
       sound.stop_music
       sound.play_music(:menu)
