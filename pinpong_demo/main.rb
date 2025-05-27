@@ -37,7 +37,9 @@ keys_held = { ## Hash to track keys held down
   s: false
 }
 
-def handle_game_over(winner, game_manager, ui, ball, l_paddle, r_paddle, walls,sound) ## Handle game over appearance logic
+
+
+def handle_game_over(winner, game_manager, ui, ball, l_paddle, r_paddle, walls, sound) ## Handle game over appearance logic
   game_manager.game_over = true
   ui.show_winner(winner)
   ball.color.opacity = 0
@@ -46,6 +48,7 @@ def handle_game_over(winner, game_manager, ui, ball, l_paddle, r_paddle, walls,s
   walls.each { |wall| wall.color.opacity = 0 }
   sound.stop_music 
   sound.play_music(:gameover) 
+
 end
 
 

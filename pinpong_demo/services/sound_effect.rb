@@ -17,7 +17,6 @@ class SoundEffect
   end
 
    def play_music(type)
-    # stop_music
     file = @music[type]
     if file && File.exist?(file)
       @current_music = Music.new(file, loop: true)
