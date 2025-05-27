@@ -1,6 +1,6 @@
 require 'ruby2d'
 
-class Paddle < Rectangle
+class Paddle < Rectangle ## Paddle class for the Pong game, representing the player's paddle
     BASE_SPEED = 2
     MAX_SPEED = 30
     FORCE = 0.4
@@ -8,7 +8,7 @@ class Paddle < Rectangle
     attr_accessor :speed, :start_x, :start_y
 
     def initialize(position)
-        super(x: position[0], y: position[1], width: 20, height: 100, color: 'white')
+        super(x: position[0], y: position[1], width: 20, height: 100, color: 'white') ## It inherits from Rectangle and has methods to move up and down, reset speed, and reset position
         @speed = BASE_SPEED
         @start_x = position[0]
         @start_y = position[1]

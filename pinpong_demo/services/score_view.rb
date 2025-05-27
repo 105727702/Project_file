@@ -1,6 +1,7 @@
 require 'ruby2d'
 
-class ScoreView
+class ScoreView   # This class is responsible for displaying the score in the game
+  attr_reader :text
   def initialize(scoreboard)
     @scoreboard = scoreboard
     @text = Text.new("", x: 230, y: 20, size: 80, color: 'white')
@@ -12,7 +13,7 @@ class ScoreView
     @text.text = "#{@scoreboard.l_score}           #{@scoreboard.r_score}"
   end
 
-  def show
+  def show 
     @text.color.opacity = 1
   end
 

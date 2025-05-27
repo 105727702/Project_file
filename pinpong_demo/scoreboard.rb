@@ -1,6 +1,5 @@
-class Scoreboard < Text
+class Scoreboard < Text ## This class is responsible for keeping track of the scores and game state
    attr_accessor :l_score, :r_score, :game_started
-
   def initialize
     reset
   end

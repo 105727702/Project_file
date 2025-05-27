@@ -1,4 +1,4 @@
-module PotionEffect
+module PotionEffect ## Module for managing potion effects in the game
   class Effect
     attr_reader :type, :start_time, :duration
 
@@ -8,12 +8,12 @@ module PotionEffect
       @duration = duration
     end
 
-    def active?
+    def active? ## Check if the effect is still active based on its duration
       Time.now - @start_time < @duration
     end
   end
 
-  class PotionEffectManager
+  class PotionEffectManager  ## This class manages the potion effects applied to the ball and paddles in the game
     attr_reader :active_effects
 
     def initialize(ball, l_paddle, r_paddle)
@@ -25,7 +25,7 @@ module PotionEffect
       @original_paddle_height = l_paddle.height 
     end
 
-    def apply_random_effects(num_effects = 3, duration = 10)
+    def apply_random_effects(num_effects, duration) ## Apply a random number of effects to the ball and paddles
       available_effects = [:increase_speed_ball, :enlarge_paddle, :slow_down_ball]
       
       num_effects.times do
@@ -48,44 +48,51 @@ module PotionEffect
 
     private
 
-    def apply_effect(type)
+    def apply_effect(type) ## Apply the effect to the ball or paddles based on the type of effect
       case type
       when :increase_speed_ball
-        @ball.speed += 2 
+        @ball.speed += 5 
         @ball.velocity.x = (@ball.velocity.x / @ball.velocity.magnitude) * @ball.speed
         @ball.velocity.y = (@ball.velocity.y / @ball.velocity.magnitude) * @ball.speed
+        @ball.color = 'red'
       when :enlarge_paddle
         @l_paddle.height = 150
         @r_paddle.height = 150
         @l_paddle.y -= 25 
         @r_paddle.y -= 25
+        @l_paddle.color = 'yellow'
+        @r_paddle.color = 'green'
       when :slow_down_ball
         @ball.speed = 3 
         @ball.velocity.x = (@ball.velocity.x / @ball.velocity.magnitude) * @ball.speed
         @ball.velocity.y = (@ball.velocity.y / @ball.velocity.magnitude) * @ball.speed
+        @ball.color = 'blue'
       end
     end
 
-    def remove_effect(type)
+    def remove_effect(type) ## Remove the effect from the ball or paddles based on the type of effect
       case type
       when :increase_speed_ball
         @ball.speed = @original_ball_speed
         @ball.velocity.x = (@ball.velocity.x / @ball.velocity.magnitude) * @ball.speed
         @ball.velocity.y = (@ball.velocity.y / @ball.velocity.magnitude) * @ball.speed
+        @ball.color = 'white'
       when :enlarge_paddle
         @l_paddle.height = @original_paddle_height
         @r_paddle.height = @original_paddle_height
         @l_paddle.y += 25
         @r_paddle.y += 25
+        @l_paddle.color = 'white'
+        @r_paddle.color = 'white'
       when :slow_down_ball
         @ball.speed = @original_ball_speed
         @ball.velocity.x = (@ball.velocity.x / @ball.velocity.magnitude) * @ball.speed
         @ball.velocity.y = (@ball.velocity.y / @ball.velocity.magnitude) * @ball.speed
+        @ball.color = 'white'
       end
     end
   end
 end
  
 
-  
 
