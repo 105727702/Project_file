@@ -1,5 +1,7 @@
+require "ruby2d"
 class SoundEffect
   def initialize
+    
     @music = {
       menu: '../sound_effect/game-background-1-321720.mp3',
       gameplay: '',
@@ -17,6 +19,7 @@ class SoundEffect
   end
 
    def play_music(type)
+    stop_music ## Stop any currently playing music
     file = @music[type]
     if file && File.exist?(file)
       @current_music = Music.new(file, loop: true)
@@ -24,8 +27,8 @@ class SoundEffect
     end
   end
 
-  def stop_music
-    @current_music&.stop
+  def stop_music 
+    @current_music&.stop 
     @current_music = nil
   end
 
