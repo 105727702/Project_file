@@ -1,4 +1,6 @@
 module InputHandler ## Module for handling input events in the game
+  
+  
   def self.handle_key_down(event, keys_held) ## Handle key down events to set paddle speeds
     case event.key
     when 'up'   then keys_held[:up] = true

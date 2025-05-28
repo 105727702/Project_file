@@ -18,6 +18,17 @@ class GameManager ##  Manages the game state, including ball, paddles, scoreboar
     show_all_movable_objects
   end
 
+  def handle_game_over(winner, game_manager, ui, ball, l_paddle, r_paddle, walls, sound) ## Handle game over appearance logic
+    @game_over = true
+    ui.show_winner(winner)
+    @ball.color.opacity = 0
+    @l_paddle.color.opacity = 0
+    @r_paddle.color.opacity = 0
+    @walls.each { |wall| wall.color.opacity = 0 }
+    sound.stop_music 
+    sound.play_music(:gameover) 
+  end
+
   def restart_game(num_walls, min_distance)   ## Restart the game with a specified number of walls and a minimum distance between them
     @scoreboard.reset
     @score_view.update

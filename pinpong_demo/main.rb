@@ -37,16 +37,16 @@ keys_held = { ## Hash to track keys held down
   s: false
 }
 
-def handle_game_over(winner, game_manager, ui, ball, l_paddle, r_paddle, walls, sound) ## Handle game over appearance logic
-  game_manager.game_over = true
-  ui.show_winner(winner)
-  ball.color.opacity = 0
-  l_paddle.color.opacity = 0
-  r_paddle.color.opacity = 0
-  walls.each { |wall| wall.color.opacity = 0 }
-  sound.stop_music 
-  sound.play_music(:gameover) 
-end
+# def handle_game_over(winner, game_manager, ui, ball, l_paddle, r_paddle, walls, sound) ## Handle game over appearance logic
+#   game_manager.game_over = true
+#   ui.show_winner(winner)
+#   ball.color.opacity = 0
+#   l_paddle.color.opacity = 0
+#   r_paddle.color.opacity = 0
+#   walls.each { |wall| wall.color.opacity = 0 }
+#   sound.stop_music 
+#   sound.play_music(:gameover) 
+# end
 
 
 on :mouse_down do |event| ## Handle mouse click events  
@@ -139,7 +139,7 @@ update do
     potion_effect_manager.send(:remove_effect, effect.type) ## Remove the effect from the manager
     potion_effect_manager.active_effects.delete(effect) ## Delete the effect from the active effects list
   end
-    handle_game_over(2, game_manager, ui, ball, l_paddle, r_paddle, walls, sound) if scoreboard.r_score == 10
+    game_manager.handle_game_over(2, game_manager, ui, ball, l_paddle, r_paddle, walls, sound) if scoreboard.r_score == 1
   
   elsif ball.x > Window.width ## Check if the ball is out of bounds 
     sound.play_effect(:ball_out)
@@ -150,7 +150,7 @@ update do
     potion_effect_manager.send(:remove_effect, effect.type) # Remove the effect from the manager
     potion_effect_manager.active_effects.delete(effect) ## Delete the effect from the active effects list
   end
-    handle_game_over(1, game_manager, ui, ball, l_paddle, r_paddle, walls, sound) if scoreboard.l_score == 10
+    game_manager.handle_game_over(1, game_manager, ui, ball, l_paddle, r_paddle, walls, sound) if scoreboard.l_score == 1
   
   end
 end
