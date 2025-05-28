@@ -25,16 +25,18 @@ module PotionEffect ## Module for managing potion effects in the game
       @original_paddle_height = l_paddle.height 
     end
 
-    def apply_random_effects(num_effects, duration) ## Apply a random number of effects to the ball and paddles
+    def apply_random_effects(num_effects, duration, sound = nil) ## Apply a random number of effects to the ball and paddles
       available_effects = [:increase_speed_ball, :enlarge_paddle, :slow_down_ball]
-      
+      applied = false
       num_effects.times do
         effect_type = available_effects.sample
         unless @active_effects.any? { |effect| effect.type == effect_type }
           @active_effects << Effect.new(effect_type, duration)
           apply_effect(effect_type)
+          applied = true
         end
       end
+      sound&.play_effect(:potion_effect) if applied
     end
 
     def update
