@@ -48,7 +48,6 @@ def handle_game_over(winner, game_manager, ui, ball, l_paddle, r_paddle, walls, 
   walls.each { |wall| wall.color.opacity = 0 }
   sound.stop_music 
   sound.play_music(:gameover) 
-
 end
 
 
@@ -76,7 +75,6 @@ on :mouse_down do |event| ## Handle mouse click events
           ball.velocity = Vector.new(11, 11)
         end
         sound.stop_music
-        sound.play_music(:gameplay)
         walls = game_manager.restart_game(num_walls, min_wall_distance)
         game_manager.game_over = false  ## Reset game over state
         game_manager.start_game
@@ -100,7 +98,7 @@ on :mouse_down do |event| ## Handle mouse click events
       ui.clear_winner_texts
       game_started = true      
       scoreboard.game_started = true
-      sound.play_music(:gameplay)
+      sound.stop_music
     elsif ui.mouse_on_back_menu?(mx, my)  ## If the back to main menu button is clicked ## go back to the main menu
       sound.stop_music
       sound.play_music(:menu)

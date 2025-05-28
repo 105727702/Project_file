@@ -73,7 +73,7 @@ module CollisionManager   ## Module for managing collisions in the game
       wall.move
       if check_collision(ball, wall)
         resolve_collision(ball, wall)
-        sound&.play_effect(:ball_hit)
+        sound&.play_effect(:ball_hit_wall)
         if rand < 0.5
           potion_effect_manager.apply_random_effects(3, 10) 
           sound&.play_effect(:potion_effect)
