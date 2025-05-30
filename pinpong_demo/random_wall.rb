@@ -26,7 +26,7 @@ class Wall < Rectangle ## Wall class for the Pong game, representing a wall that
         return false ## Overlapping or too close
       end
     end
-    return true
+    return true ## Valid position
   end
 end
 

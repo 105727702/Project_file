@@ -127,8 +127,7 @@ update do
     potion_effect_manager.send(:remove_effect, effect.type) ## Remove the effect from the manager
     potion_effect_manager.active_effects.delete(effect) ## Delete the effect from the active effects list
   end
-    game_manager.handle_game_over(2, game_manager, ui, ball, l_paddle, r_paddle, walls, sound) if scoreboard.r_score == 1
-  
+    game_manager.handle_game_over(2, game_manager, ui, ball, l_paddle, r_paddle, walls, sound) if scoreboard.r_score == 10
   elsif ball.x > Window.width ## Check if the ball is out of bounds 
     sound.play_effect(:ball_out)
     scoreboard.l_point
@@ -138,7 +137,7 @@ update do
     potion_effect_manager.send(:remove_effect, effect.type) # Remove the effect from the manager
     potion_effect_manager.active_effects.delete(effect) ## Delete the effect from the active effects list
   end
-    game_manager.handle_game_over(1, game_manager, ui, ball, l_paddle, r_paddle, walls, sound) if scoreboard.l_score == 1
+    game_manager.handle_game_over(1, game_manager, ui, ball, l_paddle, r_paddle, walls, sound) if scoreboard.l_score == 10
   
   end
 end

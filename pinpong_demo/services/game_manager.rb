@@ -44,14 +44,14 @@ class GameManager ##  Manages the game state, including ball, paddles, scoreboar
     return @walls
   end
 
-    def generate_walls(num_walls, min_distance) ## Generate walls with a minimum distance between them
-      new_walls = []
-      col_width = (Window.width - 400) / num_walls
-      x_positions = []
-      num_walls.times do |i|
-      x = 200 + i * col_width + col_width / 2
-      x_positions << x
-    end
+  def generate_walls(num_walls, min_distance) ## Generate walls with a minimum distance between them
+    new_walls = []
+    col_width = (Window.width - 400) / num_walls
+    x_positions = []
+    num_walls.times do |i|
+    x = 200 + i * col_width + col_width / 2
+    x_positions << x
+  end
 
     x_positions.each do |x|
       attempts = 0
